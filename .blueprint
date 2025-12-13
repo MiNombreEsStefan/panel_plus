@@ -1,0 +1,18 @@
+created:
+    - database/factories/UpitFactory.php
+    - database/factories/ZadatakFactory.php
+    - database/factories/SlikaFactory.php
+    - database/factories/PorukaMolbeFactory.php
+    - database/migrations/2025_12_13_170250_create_upits_table.php
+    - database/migrations/2025_12_13_170251_create_zadataks_table.php
+    - database/migrations/2025_12_13_170252_create_slikas_table.php
+    - database/migrations/2025_12_13_170253_create_poruka_molbes_table.php
+    - app/Models/Upit.php
+    - app/Models/Zadatak.php
+    - app/Models/Slika.php
+    - app/Models/PorukaMolbe.php
+models:
+    Upit: { ime_klijenta: string, email: string, telefon: 'string nullable', opis: text, status: "string default:'Novi'", timestamps: timestamps, relationships: { hasMany: Zadatak } }
+    Zadatak: { naslov: string, opis: 'text nullable', lokacija: 'string nullable', datum_kreiranja: 'datetime nullable', status: "string default:'Kreiran'", upit_id: 'id nullable foreign:upits', timestamps: timestamps, relationships: { belongsTo: Upit, hasMany: 'Slika, PorukaMolbe' } }
+    Slika: { zadatak_id: 'id foreign:zadataks', putanja: string, opis: 'string nullable', timestamps: timestamps, relationships: { belongsTo: Zadatak } }
+    PorukaMolbe: { zadatak_id: 'id foreign:zadataks', user_id: 'id foreign:users', tekst: text, datum_vreme: 'datetime nullable', timestamps: timestamps, relationships: { belongsTo: 'Zadatak, User' } }
