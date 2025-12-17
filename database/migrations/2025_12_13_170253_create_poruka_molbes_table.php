@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('tekst');
             $table->dateTime('datum_vreme')->nullable();
             $table->timestamps();
+            
         });
 
         Schema::enableForeignKeyConstraints();

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\Slika; 
+  
 
 class Zadatak extends Model
 {
@@ -17,13 +19,12 @@ class Zadatak extends Model
      * @var array
      */
     protected $fillable = [
-        'naslov',
-        'opis',
-        'lokacija',
-        'datum_kreiranja',
-        'status',
-        'upit_id',
-    ];
+    'naslov',
+    'opis',
+    'lokacija',
+    'status',
+];
+
 
     /**
      * Get the attributes that should be cast.
@@ -44,13 +45,15 @@ class Zadatak extends Model
         return $this->belongsTo(Upit::class);
     }
 
-    public function slikas(): HasMany
+    public function slike(): HasMany
     {
         return $this->hasMany(Slika::class);
     }
 
-    public function porukaMolbes(): HasMany
+    public function porukeMolbi(): HasMany
     {
-        return $this->hasMany(PorukaMolbe::class);
+        return $this->hasMany(PorukaMolbe::class, 'zadatak_id');
     }
+
+
 }

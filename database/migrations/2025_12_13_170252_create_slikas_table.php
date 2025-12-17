@@ -18,7 +18,11 @@ return new class extends Migration
             $table->foreignId('zadatak_id')->constrained();
             $table->string('putanja');
             $table->string('opis')->nullable();
+            $table->foreignId('zadatak_id')->constrained()->cascadeOnDelete();
+            $table->string('putanja');
+
             $table->timestamps();
+
         });
 
         Schema::enableForeignKeyConstraints();

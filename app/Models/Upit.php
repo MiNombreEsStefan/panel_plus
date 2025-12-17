@@ -20,6 +20,7 @@ class Upit extends Model
         'email',
         'telefon',
         'opis',
+        'odgovor',
         'status',
     ];
 
@@ -35,8 +36,10 @@ class Upit extends Model
         ];
     }
 
-    public function zadataks(): HasMany
+    public function zadaci(): HasMany
     {
         return $this->hasMany(Zadatak::class);
     }
+
+    
 }

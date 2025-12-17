@@ -19,7 +19,7 @@ class PorukaMolbe extends Model
         'zadatak_id',
         'user_id',
         'tekst',
-        'datum_vreme',
+        'odgovor_admin',
     ];
 
     /**
@@ -39,11 +39,11 @@ class PorukaMolbe extends Model
 
     public function zadatak(): BelongsTo
     {
-        return $this->belongsTo(Zadatak::class);
+        return $this->belongsTo(Zadatak::class, 'zadatak_id');
     }
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
