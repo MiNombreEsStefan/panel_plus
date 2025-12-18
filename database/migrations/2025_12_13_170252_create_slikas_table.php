@@ -15,11 +15,10 @@ return new class extends Migration
 
         Schema::create('slikas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('zadatak_id')->constrained();
             $table->string('putanja');
             $table->string('opis')->nullable();
             $table->foreignId('zadatak_id')->constrained()->cascadeOnDelete();
-            $table->string('putanja');
+            
 
             $table->timestamps();
 
